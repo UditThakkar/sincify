@@ -1,35 +1,28 @@
 require 'google/api_client/client_secrets'
 
 class YoutubeSessionsController < ApplicationController
+  include Devise::Controllers::Helpers
+
   def new
-    redirect_to auth_client.authorization_uri.to_s,  allow_other_host: true
+    redirect_to auth_client.authorization_uri.to_s, allow_other_host: true
   end
 
   def callback
     auth_client.code = params[:code]
     auth_client.fetch_access_token!
     auth_client.client_secret = nil
+    
+    # Save the access token in the session or user record.
+    access_token = auth_client.access_token
+    session[:youtube_access_token] = access_token
 
-    # session[:credentials] = auth_client.to_json
+    # Find or create the user based on the access token.
+    user = User.find_or_create_by(youtube_access_token: access_token)
+    user.save(validate: false)
+    debugger
 
-
-    YoutubeSession.create!(
-      credentials: JSON.parse(auth_client.to_json)
-    )
-    # y = Youtube.new(temp_session)
-    # users_channel = y.fetch_channel
-
-    # if current_user.youtube_channel_id.blank?
-    #   current_user.update!(youtube_channel_id: users_channel.id)
-    # elsif current_user.youtube_channel_id != users_channel.id
-    #   flash[:errors] = ["Unable to connect to an unknown channel with ID: #{users_channel.id}"]
-    #   redirect_to '/'
-    #   return
-    # end
-
-    # # Store the auth client creds in the db
-    # temp_session.user_id = current_user.id
-    # temp_session.save!
+    # Sign in the user using Devise.
+    sign_in(user)
 
     redirect_to '/'
   end
@@ -54,7 +47,7 @@ class YoutubeSessionsController < ApplicationController
       auth_client = client_secrets.to_authorization
       auth_client.update!(
         scope: 'https://www.googleapis.com/auth/youtube.force-ssl',
-        redirect_uri: redirect_uri,
+        redirect_uri: redirect_uri, # Use Devise's callback path
         additional_parameters: {
           access_type: 'offline',
           include_granted_scopes: true,

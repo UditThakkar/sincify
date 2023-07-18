@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   root 'home#index'
 
+  # devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
 
   resources :converter, only: [] do
     collection do
