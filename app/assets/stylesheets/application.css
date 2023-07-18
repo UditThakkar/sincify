@@ -1,0 +1,243 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+/* header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+} */
+
+.mah-btn {
+  margin-left: 13px;
+  margin-top: 10px;
+}
+
+header h1 {
+  margin: 0;
+}
+
+main {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.intro h2 {
+  font-size: 24px;
+}
+
+.form-section {
+  margin-top: 40px;
+}
+
+/* form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+label {
+  font-size: 18px;
+}
+
+input[type="text"] {
+  padding: 8px;
+  margin: 8px 0;
+  width: 100%;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+/* Add the previous CSS code for the homepage before adding these styles */
+
+.playlist-details {
+  margin-top: 40px;
+}
+
+.playlist-details h2 {
+  font-size: 24px;
+}
+
+.playlist-details p {
+  margin-bottom: 10px;
+}
+
+.conversion-progress {
+  margin-top: 40px;
+}
+
+.conversion-progress h2 {
+  font-size: 24px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: #333;
+}
+
+.conversion-progress p {
+  margin-top: 10px;
+}
+
+/* Add the previous CSS code for the homepage and playlist conversion page before adding these styles */
+
+.conversion-progress {
+  margin-top: 40px;
+}
+
+.conversion-progress h2 {
+  font-size: 24px;
+}
+
+.loading-indicator {
+  margin: 20px auto;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid #ccc;
+  border-top-color: #333;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.song-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.song-list li {
+  margin-bottom: 5px;
+}
+
+.current-song {
+  font-weight: bold;
+}
+
+/* Add the previous CSS code for the homepage, playlist conversion page, and conversion progress page before adding these styles */
+
+.success-message {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.success-message h2 {
+  font-size: 24px;
+}
+
+.success-message p {
+  margin-bottom: 20px;
+}
+
+.playlist-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+}
+
+.playlist-link:hover {
+  background-color: #555;
+}
+
+/* Add the previous CSS code for the homepage, playlist conversion page, conversion progress page, and success page before adding these styles */
+
+.error-message {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.error-message h2 {
+  font-size: 24px;
+}
+
+.error-message p {
+  margin-bottom: 10px;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background-color: #555;
+}
+
+/* Add the previous CSS code for the homepage, playlist conversion page, conversion progress page, success page, and error page before adding these styles */
+
+.completion-message {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.completion-message h2 {
+  font-size: 24px;
+}
+
+.completion-message p {
+  margin-bottom: 10px;
+}
+
+.playlist-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+}
+
+.playlist-link:hover {
+  background-color: #555;
+}
+
+

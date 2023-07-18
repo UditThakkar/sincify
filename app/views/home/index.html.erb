@@ -1,0 +1,21 @@
+<header class="bg-secondary text-white py-3">
+    <h1 class="mb-0 ms-5">Playlist Converter</h1>
+</header>
+<main class="py-4">
+    <div class="container">
+      <section class="mb-4">
+        <h2>Welcome to Playlist Converter</h2>
+        <p>Enter the Spotify playlist link below:</p>
+        <div class="input-group">
+        <%= form_tag convert_playlist_converter_index_path, method: :get do %>
+          <div class="input-group">
+            <%= text_field_tag :url, nil, class: "form-control", placeholder: "Spotify Playlist Link", size: 50 %>
+            <div class="input-group-append">
+              <%= submit_tag 'Convert', class: "btn btn-primary mah-btn" %>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      </section>
+    </div>
+  </main>
