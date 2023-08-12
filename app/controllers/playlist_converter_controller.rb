@@ -6,13 +6,16 @@ class PlaylistConverterController < ApplicationController
   def convert
     url = params[:url]
     @name = params[:playlist_name]
-    debugger
+  
     spotify_user = RSpotify::User.find(current_user.spotify_user.creds['id'])
     spotify_user_id = spotify_user.href.match(%r{/users/([^/]+)})[1]
+  
     playlist_id = url.match(%r{playlist/([\w\d]+)})[1]
     @playlist = RSpotify::Playlist.find_by_id(playlist_id)
+  
     songs = @playlist.tracks.first(30)
-    @song_names = songs.map { |song| song.name }
+    @song_names = songs.map(&:name)
+  
     access_token = current_user.youtube_user.credentials['access_token']
     playlist_id = create_youtube_playlist(access_token, @name)
 
@@ -22,11 +25,6 @@ class PlaylistConverterController < ApplicationController
     end
 
     @playlist_link =  "https://www.youtube.com/playlist?list=#{playlist_id}"
-    puts '********************************'
-    puts '********************************'
-    puts @playlist_link
-    puts '********************************'
-    puts '********************************'
     render 'convert'
   end
 
