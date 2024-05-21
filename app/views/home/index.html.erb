@@ -1,0 +1,47 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">SinciFy</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="/">Home</a>
+        <% if !current_user %>
+          <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
+          <%= link_to 'Log In', new_user_registration_path, class: 'nav-link' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <h1>Welcome to Sincify</h1>
+  <% if !current_user.spotify_user %>
+    <h3>You need to connect your spotify account to continue</h3>
+    <%= link_to 'Log in with Spotify', '/auth/spotify', method: :post %>
+  <% else %>
+    <% if !current_user.youtube_user %>
+      <%= link_to 'Log In with Youtube', youtube_sessions_path, class: 'btn btn-primary' %>
+    <% else %>
+      <div class="mb-4">
+        <h2>Welcome to Playlist Converter</h2>
+        <p>Enter the Spotify playlist link and name for your brand new YouTube playlist below:</p>
+        <%= link_to 'Refresh Youtube Token', refresh_token_path, class: 'btn btn-danger' %> <br>
+        <div class="input-group">
+        <%= form_tag convert_playlist_converter_index_path, method: :get do %>
+          <%# <div class="input-group"> %>
+            <%= text_field_tag :playlist_name, nil, class: "form-control", placeholder: "Youtube Playlist Name" %>
+            <%= text_field_tag :url, nil, class: "form-control", placeholder: "Spotify Playlist Link", size: 50 %>
+            <div class="input-group-append">
+              <%= submit_tag 'Convert', class: "btn btn-primary mah-btn" %>
+            </div>
+          <%# </div> %>
+        <% end %>
+        </div>
+      </section>
+    <% end %>
+  <% end %>
+</div>

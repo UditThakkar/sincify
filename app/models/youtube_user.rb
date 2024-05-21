@@ -1,0 +1,3 @@
+class YoutubeUser < ApplicationRecord
+  belongs_to :user
+end

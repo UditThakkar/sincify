@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">SinciFy</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="/">Home</a>
+        <% if !current_user %>
+          <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
+          <%= link_to 'Log In', new_user_registration_path, class: 'nav-link' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <h2> Wait for your playlist to be converted </h2>
+
+  <h3> Your playlist was <%= @playlist.name %>. Name for your youtube playlist is <%= @name %> </h3>
+  <p> It might take some time so you may go and play some games hehe!</p>
+
+  <%= render 'playlist_button' %>
+
+</div>
+
